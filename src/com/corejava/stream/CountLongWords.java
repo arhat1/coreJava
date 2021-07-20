@@ -12,21 +12,30 @@ public class CountLongWords {
     public static void main(String[] args) throws IOException {
         String contents = new String(Files.readAllBytes(Paths.get("bin/Jane Eyre.txt")), StandardCharsets.UTF_8);
         List<String> words = Arrays.asList(contents.split("\\PL+"));
+        long start =0;
+        long end = 0;
+
+        start = System.currentTimeMillis();
         long count = 0;
         for (String w: words){
             if (w.length()>12){
-                System.out.println(w);
+                //System.out.println(w);
                 count++;
             }
         }
-        System.out.println(count);
+        end = System.currentTimeMillis();
+        System.out.printf("count=%d, 耗时%d毫秒\n",count, end-start);
 
 
+        start = System.currentTimeMillis();
         count = words.stream().filter(w->w.length()>12).count();
-        System.out.println(count);
+        end = System.currentTimeMillis();
+        System.out.printf("count=%d, 耗时%d毫秒\n",count, end-start);
 
+        start = System.currentTimeMillis();
         count = words.parallelStream().filter(w->w.length()>12).count();
-        System.out.println(count);
+        end = System.currentTimeMillis();
+        System.out.printf("count=%d, 耗时%d毫秒\n",count, end-start);
 
 
     }
