@@ -8,38 +8,6 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class TextFileTest {
-    public static class Employee{
-        private String name;
-        private double salary;
-        private LocalDate hireDate;
-
-        public String getName() {
-            return name;
-        }
-
-        public double getSalary() {
-            return salary;
-        }
-
-        @Override
-        public String toString() {
-            return "Employee{" +
-                    "name='" + name + '\'' +
-                    ", salary=" + salary +
-                    ", hireDate=" + hireDate +
-                    '}';
-        }
-
-        public LocalDate getHireDate() {
-            return hireDate;
-        }
-
-        public Employee(String name, double salary, int hireYear, int hireMonth, int hireDay){
-            this.name = name;
-            this.salary = salary;
-            this.hireDate = LocalDate.of(hireYear, hireMonth, hireDay);
-        }
-    }
 
     public static Employee readEmployee(Scanner in){
         String line = in.nextLine();
